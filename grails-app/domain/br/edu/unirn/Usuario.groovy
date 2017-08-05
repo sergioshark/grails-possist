@@ -8,6 +8,7 @@ class Usuario {
 
     static constraints = {
         email email: true, unique: true
+        senha password:true
     }
 
     def beforeInsert() {
