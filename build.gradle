@@ -10,6 +10,11 @@ buildscript {
     }
 }
 
+plugins {
+    id 'com.craigburke.bower-installer' version '2.5.1' //https://github.com/craigburke/bower-installer-gradle
+}
+
+
 version "0.1"
 group "possist"
 
@@ -71,4 +76,58 @@ bootRun {
 assets {
     minifyJs = true
     minifyCss = true
+}
+
+
+
+bower {
+    installBase = 'grails-app/assets/vendor'
+
+    'fontawesome'('4.5.x'){
+        source 'css/**' >> 'css/'
+        source 'fonts/**' >> 'fonts/'
+    }
+
+    'bootstrap'('3.3.x'){
+        source "dist/**"
+    }
+
+    'bootstrap-datepicker'('*'){
+        source 'dist/css/**' >> 'css/'
+        source 'dist/js/**' >> 'js/'
+        source 'dist/locales/bootstrap-datepicker.pt-BR.min.js' >> 'js/'
+    }
+
+    'jquery'('*')
+
+    'vue'('1.0.26')
+
+    'vue-resource'('1.0.2')
+
+    'vue-validator'('2.1.5'){
+        source "dist/**"
+    }
+
+    'vuetable'('*'){
+        source 'dist/**' >> 'dist/'
+    }
+
+    'select2'('4.0.x'){
+        source 'dist/js/**'
+        source 'dist/css/**'
+    }
+
+    'select2-bootstrap-theme'('0.1.x'){
+        source 'dist/**'
+    }
+
+    'jquery.maskedinput'('*') // Lib para mascaramento de campos
+
+    'moment'('*') // Lib para tratamento de data/hora
+
+    'bootbox'('*') // Lib para exibição de perguntas.
+
+    'webcamjs-bower'('*') // Lib para captura de imagem.
+
+
 }
