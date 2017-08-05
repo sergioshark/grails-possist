@@ -9,10 +9,6 @@
 *
 *= require bootstrap/css/bootstrap.css
 *= require fontawesome/css/font-awesome.css
-*= require bootstrap-select/bootstrap-select.css
-*= require bootstrap-datepicker/css/bootstrap-datepicker3.css
-*= require select2/select2.css
-*= require select2-bootstrap-theme/select2-bootstrap.css
-*= require style
+*= require styleAut
 *= require_self
 */
