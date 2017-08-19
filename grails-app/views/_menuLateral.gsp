@@ -20,6 +20,11 @@
                         <span>Matrícula</span>
                     </a>
                 </li>
+                <li id="usuarioSideOpt">
+                    <a href="${createLink(controller: 'usuario')}" title="Usuario">
+                        <span>Usuario</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
