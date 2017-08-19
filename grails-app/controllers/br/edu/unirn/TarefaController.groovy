@@ -6,9 +6,7 @@ class TarefaController {
 
     static scaffold = Tarefa
 
-    def index(){
-
-    }
+    def index(){}
 
     def save(){
         params << request.JSON
@@ -17,6 +15,7 @@ class TarefaController {
         tarefa.dataLimite = params.date('dataLimite', 'dd/MM/yyyy')
 
         if(!tarefa.save(flush: true)){
+            tarefa.errors.each {println it}
             render status: 500
             return
         }
