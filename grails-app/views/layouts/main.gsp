@@ -49,7 +49,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="${createLink(controller: "login", action: "logout")}">
+                                    <a href="${createLink(controller: "autenticacao", action: "logout")}">
                                         <i class="fa fa-sign-out fa-fw fa-lg"></i> Sair
                                     </a>
                                 </li>
