@@ -4,4 +4,5 @@ class TarefaController {
 
     static scaffold = Tarefa
 
+    def index(){}
 }

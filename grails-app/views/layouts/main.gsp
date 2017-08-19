@@ -129,5 +129,6 @@
 </div>
 <asset:javascript src="application.js"/>
 <asset:deferredScripts/>
+<g:pageProperty name="page.javascript"/>
 </body>
 </html>
