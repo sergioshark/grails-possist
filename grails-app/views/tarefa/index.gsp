@@ -24,22 +24,22 @@
                         <div class="col-sm-12">
                             <table class="table table-bordered">
                                 <thead>
-                                <tr>
-                                    <td>Titulo</td>
-                                    <td>Usuario Abertura</td>
-                                    <td>Usuario Resp.</td>
-                                    <td>Data Limite</td>
-                                    <td>Tipo Tarefa</td>
-                                    <td>Status</td>
-                                    <td>%</td>
-                                </tr>
+                                    <tr>
+                                        <th>Titulo</th>
+                                        <th>Usuario Abertura</th>
+                                        <th>Usuario Resp.</th>
+                                        <th>Data Limite</th>
+                                        <th>Tipo Tarefa</th>
+                                        <th>Status</th>
+                                        <th>%</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                 <tr v-if="loading">
                                     <td colspan="7">Carregando....</td>
                                 </tr>
                                 <tr v-for="tarefa in tarefas" :key="tarefa.id">
-                                    <td>{{tarefa.titulo}}</td>
+                                    <td><a href="javascript:void(0);" @click="editTarefa(tarefa)">{{tarefa.titulo}}</a></td>
                                     <td>{{tarefa.usuarioAbertura}}</td>
                                     <td>{{tarefa.usuarioResponsavel}}</td>
                                     <td>{{tarefa.dataLimite}}</td>
@@ -71,7 +71,8 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary" @click="salvarTarefa"><i class="fa fa-floppy-o"></i> Salvar Tarefa</button>
+                            <button type="button" class="btn btn-primary" @click="salvarTarefa" v-if="!tarefa.id"><i class="fa fa-floppy-o"></i> Salvar Tarefa</button>
+                            <button type="button" class="btn btn-primary" @click="updateTarefa" v-if="tarefa.id"><i class="fa fa-floppy-o"></i> Alterar Tarefa</button>
                         </div>
                     </div>
                 </div>

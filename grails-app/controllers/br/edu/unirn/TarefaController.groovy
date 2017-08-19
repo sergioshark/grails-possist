@@ -12,20 +12,31 @@ class TarefaController {
 
     def save(){
         params << request.JSON
-        println params
         Tarefa tarefa = new Tarefa()
         bindData(tarefa, params, [exclude:['dataLimite']])
         tarefa.dataLimite = params.date('dataLimite', 'dd/MM/yyyy')
 
-        println tarefa
-
         if(!tarefa.save(flush: true)){
-            println tarefa.errors.each {println it}
             render status: 500
             return
         }
 
         render status: 200
+    }
+
+    def show(){
+        Tarefa tarefa = Tarefa.get(params.id)
+        render([
+                id: tarefa.id,
+                titulo: tarefa.titulo,
+                texto: tarefa.texto,
+                usuarioAbertura: tarefa.usuarioAbertura.id,
+                usuarioResponsavel: tarefa.usuarioResponsavel?.id,
+                dataLimite: tarefa.dataLimite.format("dd/MM/yyyy"),
+                tipoTarefa: tarefa.tipoTarefa.id,
+                statusTarefa: tarefa.statusTarefa.name(),
+                porcentagem: tarefa.porcentagem
+        ] as JSON)
     }
 
     def list(){
@@ -45,5 +56,20 @@ class TarefaController {
         }
 
         render retorno as JSON
+    }
+
+    def update(){
+        params << request.JSON
+        Tarefa tarefa = Tarefa.get(params.id)
+
+        bindData(tarefa, params, [exclude:['dataLimite']])
+        tarefa.dataLimite = params.date('dataLimite', 'dd/MM/yyyy')
+
+        if(!tarefa.save(flush: true)){
+            render status: 500
+            return
+        }
+
+        render status: 200
     }
 }

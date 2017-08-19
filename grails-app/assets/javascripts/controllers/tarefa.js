@@ -16,6 +16,7 @@ var tarefa = new Vue({
             })
         },
         novaTarefa: function(){
+            this.tarefa = {};
             $("#formTarefa").modal('show');
         },
         salvarTarefa: function(){
@@ -23,8 +24,23 @@ var tarefa = new Vue({
                 this.getTarefas();
                 $("#formTarefa").modal('hide');
                 this.tarefa = {};
+            }, function(error){
+                console.info(error)
+            })
+        },
+        editTarefa: function(tarefa){
+            this.$http.get(window.baseUrl+"tarefa/show/"+tarefa.id).then(function(resp){
+                this.tarefa = resp.data;
+                $("#formTarefa").modal('show');
             }, function(resp){
-
+            })
+        },
+        updateTarefa: function(){
+            this.$http.put(window.baseUrl+"tarefa/update/"+this.tarefa.id, this.tarefa).then(function(resp){
+                this.getTarefas();
+                $("#formTarefa").modal('hide');
+                this.tarefa = {};
+            }, function(resp){
             })
         }
     },
