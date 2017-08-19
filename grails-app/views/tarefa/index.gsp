@@ -65,11 +65,13 @@
                             <h4 class="modal-title">Nova Tarefa</h4>
                         </div>
                         <div class="modal-body">
-                            <p>One fine body&hellip;</p>
+                            <form class="form-horizontal">
+                                <g:render template="form"/>
+                            </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" @click="salvarTarefa"><i class="fa fa-floppy-o"></i> Salvar Tarefa</button>
                         </div>
                     </div>
                 </div>

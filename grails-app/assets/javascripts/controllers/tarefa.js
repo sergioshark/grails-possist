@@ -17,6 +17,15 @@ var tarefa = new Vue({
         },
         novaTarefa: function(){
             $("#formTarefa").modal('show');
+        },
+        salvarTarefa: function(){
+            this.$http.post(window.baseUrl+"tarefa/save", this.tarefa).then(function(resp){
+                this.getTarefas();
+                $("#formTarefa").modal('hide');
+                this.tarefa = {};
+            }, function(resp){
+
+            })
         }
     },
     ready: function(){

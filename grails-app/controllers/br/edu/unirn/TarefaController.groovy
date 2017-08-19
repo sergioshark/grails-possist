@@ -10,6 +10,24 @@ class TarefaController {
 
     }
 
+    def save(){
+        params << request.JSON
+        println params
+        Tarefa tarefa = new Tarefa()
+        bindData(tarefa, params, [exclude:['dataLimite']])
+        tarefa.dataLimite = params.date('dataLimite', 'dd/MM/yyyy')
+
+        println tarefa
+
+        if(!tarefa.save(flush: true)){
+            println tarefa.errors.each {println it}
+            render status: 500
+            return
+        }
+
+        render status: 200
+    }
+
     def list(){
         def retorno = []
 
