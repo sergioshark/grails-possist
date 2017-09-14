@@ -32,6 +32,7 @@
                                         <th>Tipo Tarefa</th>
                                         <th>Status</th>
                                         <th>%</th>
+                                        <th>Log Tarefa</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -46,6 +47,11 @@
                                     <td>{{tarefa.tipoTarefa}}</td>
                                     <td>{{tarefa.statusTarefa}}</td>
                                     <td>{{tarefa.porcentagem}}</td>
+                                    <td>
+                                        <button class="btn btn-success pull-right" @click="visaoTarefa(tarefa)">
+                                            Log Tarefa
+                                        </button>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -77,7 +83,54 @@
                     </div>
                 </div>
             </div>
+            <div class="modal fade" tabindex="-1" role="dialog" id="formVisaoTarefa">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Detalhes Tarefa</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal">
+                                <g:render template="form"/>
+                            </form>
+                        </div>
 
+                        <div class="modal-body">
+                            <form class="form-horizontal">
+                                <g:render template="view"/>
+                            </form>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" @click="novoLogTarefa">Novo Log Tarefa</button>
+                            <button  type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" tabindex="-1" role="dialog" id="formLogTarefa">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title"> Cadastrar Log Tarefa</h4>
+                        </div>
+
+                        <div class="modal-body">
+                            <form class="form-horizontal">
+                                <g:render template="formLog"/>
+                            </form>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" @click="salvarLogTarefa"><i class="fa fa-floppy-o"></i> Salvar</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
     <content tag="javascript">

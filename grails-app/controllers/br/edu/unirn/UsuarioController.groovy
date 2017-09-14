@@ -23,6 +23,7 @@ class UsuarioController {
         respond usuario
     }
 
+
     def create() {
         respond new Usuario(params)
     }

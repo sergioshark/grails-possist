@@ -11,13 +11,13 @@
                     <span>Cadastros</span>
                 </li>
                 <li id="alunoSideOpt">
-                    <a href="${createLink(controller: 'tarefa')}" title="Tarefa">
+                    <a href="${createLink(controller: 'tarefa')}" title="Tarefa1">
                         <span>Tarefa</span>
                     </a>
                 </li>
-                <li id="matriculaSideOpt">
-                    <a href="${createLink(controller: 'matricula')}" title="Matrícula">
-                        <span>Matrícula</span>
+                <li id="buscaTarefaSideOpt">
+                    <a href="${createLink(controller: 'tarefa', action: 'buscaTarefa')}" title="Busca de Tarefa">
+                        <span>Busca de Tarefas</span>
                     </a>
                 </li>
                 <li id="usuarioSideOpt">
